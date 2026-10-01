@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أذكار المسلم</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <header class="header">
+    <h1 class="logo">أذكار المسلم</h1>
+    <div class="user-bar">
+      <span id="welcomeText"></span>
+      <a id="loginLink" href="login.html" class="pill">تسجيل الدخول</a>
+      <button id="logoutBtn" class="pill hidden">تسجيل خروج</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="morning">☀️ أذكار الصباح</button>
+    <button class="tab" data-tab="evening">🌙 أذكار المساء</button>
+    <button class="tab" data-tab="favorites">⭐ المفضلة</button>
+  </nav>
+
+  <main class="container">
+    <p id="progressText" class="progress-text"></p>
+
+    <div id="zekrCard" class="zekr-card">
+      <button id="favBtn" class="fav-btn" aria-label="المفضلة">☆</button>
+      <p id="zekrText" class="zekr-text"></p>
+      <p class="tap-hint" id="tapHint">المس الذكر للعدّ</p>
+    </div>
+
+    <div class="counter-wrap">
+      <svg class="ring" viewBox="0 0 120 120">
+        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+        <circle id="ringFill" class="ring-fill" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div id="counterNum" class="counter-num">0</div>
+    </div>
+
+    <div class="nav-btns">
+      <button id="nextBtn" class="nav-btn">التالي ←</button>
+      <button id="prevBtn" class="nav-btn">→ السابق</button>
+    </div>
+
+    <p id="emptyMsg" class="empty-msg hidden"></p>
+  </main>
+
+  <footer class="footer">
+    تم التصميم بواسطة عمر رحاب الدين <span class="reg">®</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

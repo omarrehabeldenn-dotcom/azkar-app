@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - أذكار</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <header class="header">
+    <h1>أذكار المسلم</h1>
+  </header>
+
+  <main class="auth-box">
+    <div class="tabs">
+      <button id="tabLogin" class="tab active">تسجيل الدخول</button>
+      <button id="tabRegister" class="tab">حساب جديد</button>
+    </div>
+
+    <p id="message" class="message"></p>
+
+    <form id="loginForm" class="auth-form">
+      <input type="email" id="loginEmail" placeholder="الإيميل" required>
+      <input type="password" id="loginPassword" placeholder="الباسورد" required>
+      <button type="submit" class="submit-btn">دخول</button>
+    </form>
+
+    <form id="registerForm" class="auth-form hidden">
+      <input type="text" id="regUsername" placeholder="اسم المستخدم" required>
+      <input type="email" id="regEmail" placeholder="الإيميل" required>
+      <input type="password" id="regPassword" placeholder="الباسورد (6 حروف على الأقل)" required>
+      <button type="submit" class="submit-btn">إنشاء حساب</button>
+    </form>
+
+    <a href="index.html" class="back-link">الرجوع للأذكار</a>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

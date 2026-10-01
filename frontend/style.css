@@ -1,0 +1,344 @@
+:root {
+  --bg1: #0b3d33;
+  --bg2: #06241f;
+  --card: rgba(255, 255, 255, 0.07);
+  --gold: #e3b341;
+  --gold-soft: #f3d98b;
+  --green: #1f8f74;
+  --text: #f4f1ea;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', Tahoma, Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(160deg, var(--bg1), var(--bg2));
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* توهّج متحرك في الخلفية */
+.bg-glow {
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  margin-left: -260px;
+  background: radial-gradient(circle, rgba(227, 179, 65, 0.22), transparent 65%);
+  animation: float 9s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(40px) scale(1.12); }
+}
+
+/* الهيدر */
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px 16px 8px;
+  animation: fadeDown 0.8s ease both;
+}
+
+.header h1,
+.logo {
+  margin: 0;
+  font-size: 34px;
+  color: var(--gold-soft);
+  text-shadow: 0 2px 14px rgba(227, 179, 65, 0.35);
+}
+
+.user-bar {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.pill {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.pill:hover {
+  background: rgba(227, 179, 65, 0.3);
+  transform: translateY(-2px);
+}
+
+/* التابات (في الصفحة الرئيسية بس) */
+nav.tabs {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 16px 6px;
+  animation: fadeDown 0.9s ease both;
+}
+
+nav.tabs .tab {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+nav.tabs .tab:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+nav.tabs .tab.active {
+  background: linear-gradient(135deg, var(--gold), #c9962a);
+  color: #1b1b1b;
+  border-color: transparent;
+  font-weight: bold;
+  box-shadow: 0 4px 18px rgba(227, 179, 65, 0.4);
+}
+
+/* المحتوى */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 16px 30px;
+  text-align: center;
+}
+
+.progress-text {
+  color: var(--gold-soft);
+  font-size: 16px;
+  min-height: 24px;
+  margin: 10px 0;
+}
+
+/* كارت الذكر */
+.zekr-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  padding: 56px 24px 26px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.zekr-card:hover {
+  border-color: rgba(227, 179, 65, 0.45);
+}
+
+.zekr-text {
+  margin: 0;
+  max-height: 42vh;
+  overflow-y: auto;
+  font-size: 26px;
+  line-height: 2.1;
+}
+
+.tap-hint {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: rgba(244, 241, 234, 0.55);
+}
+
+/* حركة دخول الذكر الجديد */
+.zekr-card.slide {
+  animation: slideIn 0.5s ease both;
+}
+
+/* نبضة عند اللمس */
+.zekr-card.pop {
+  animation: pop 0.2s ease;
+}
+
+/* لما الذكر يخلص */
+.zekr-card.done {
+  border-color: var(--gold);
+  box-shadow: 0 0 35px rgba(227, 179, 65, 0.45);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* زرار المفضلة */
+.fav-btn {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: none;
+  border: none;
+  color: var(--gold-soft);
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.25s;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+}
+
+.fav-btn.active {
+  color: var(--gold);
+  text-shadow: 0 0 14px rgba(227, 179, 65, 0.8);
+  animation: starPop 0.4s ease;
+}
+
+@keyframes starPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6) rotate(20deg); }
+  100% { transform: scale(1); }
+}
+
+/* العدّاد الدايري */
+.counter-wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 26px auto 18px;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 8;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 326.73;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.35s ease;
+  filter: drop-shadow(0 0 6px rgba(227, 179, 65, 0.6));
+}
+
+.counter-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: bold;
+  color: var(--gold-soft);
+}
+
+/* أزرار السابق والتالي */
+.nav-btns {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, var(--green), #17695a);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.empty-msg {
+  margin-top: 30px;
+  font-size: 20px;
+  color: var(--gold-soft);
+  line-height: 1.9;
+}
+
+/* الفوتر */
+.footer {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  text-align: center;
+  padding: 18px 16px;
+  font-size: 15px;
+  color: rgba(244, 241, 234, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .reg {
+  color: var(--gold);
+  font-size: 13px;
+  vertical-align: super;
+}
+
+@media (max-width: 480px) {
+  .header h1, .logo { font-size: 28px; }
+  .zekr-text { font-size: 22px; }
+  nav.tabs .tab { font-size: 15px; padding: 9px 14px; }
+}
